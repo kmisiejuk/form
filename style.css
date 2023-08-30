@@ -1,0 +1,481 @@
+:root {
+	--white-color: rgb(255, 255, 255);
+	--second-color: rgba(232, 229, 229, 0.65);
+	--error-color: rgb(241, 241, 78);
+	--popup-color: rgba(0, 0, 0, 0.85);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a,
+.form__input-show-password {
+	padding: 5px 0;
+	color: var(--second-color);
+	text-decoration: none;
+	font-size: 0.8rem;
+	text-align: center;
+	transition: color 0.3s;
+}
+
+a:hover,
+.form__input-show-password {
+	color: var(--white-color);
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	font-family: "Montserrat", sans-serif;
+	background-color: rgba(175, 193, 243, 1);
+	background-image: linear-gradient(
+		190deg,
+		rgb(71, 120, 255) 0%,
+		rgb(4, 42, 167) 78%
+	);
+	color: var(--white-color);
+	overflow: hidden;
+}
+
+.spacer {
+	margin-bottom: 32px;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	max-width: 90%;
+	padding: 32px 48px;
+	background-image: linear-gradient(
+		190deg,
+		rgb(71, 120, 255) 0%,
+		rgb(4, 42, 167) 78%
+	);
+	background-clip: padding-box;
+	border: 4px solid transparent;
+	border-radius: 3px;
+	box-shadow: 0 0 8px var(--second-color);
+	/* overflow: hidden; */
+}
+.form::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: -4px;
+	border-radius: inherit;
+	z-index: -1;
+	background: linear-gradient(
+		170deg,
+		rgb(71, 120, 255),
+		rgb(254, 254, 254),
+		rgb(71, 120, 255)
+	);
+}
+
+.form__heading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.form__heading-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	width: 80px;
+	border: 1px solid var(--white-color);
+	border-radius: 50%;
+	box-shadow: 0 0 5px var(--white-color) inset;
+}
+.form__heading-icon i {
+	font-size: 2rem;
+}
+.form__heading-title {
+	text-align: center;
+	font-weight: 300;
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+.form__input-container {
+	display: flex;
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid var(--white-color);
+}
+.form__input {
+	width: 100%;
+	border: none;
+	font-size: 1rem;
+	background-color: transparent;
+	color: var(--white-color);
+}
+.form__input:focus-visible {
+	outline: 0;
+}
+.form__input::placeholder {
+	color: var(--second-color);
+	font-family: inherit;
+	font-style: italic;
+	font-weight: 100;
+}
+.form__input--icon {
+	width: 20px;
+	margin: 5px;
+	color: var(--second-color);
+}
+.form__password-info {
+	position: relative;
+}
+.form__info i {
+	position: absolute;
+	z-index: 10;
+}
+.form__popup {
+	display: flex;
+	position: relative;
+	color: var(--popup-color);
+	text-transform: uppercase;
+	user-select: none;
+}
+
+.form__popup-info,
+.wrong-password-info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	visibility: hidden;
+	margin-left: 15px;
+	padding: 5px 5px;
+	width: 160px;
+	background-color: var(--popup-color);
+	color: var(--second-color);
+	text-align: center;
+	border-radius: 8px;
+	z-index: 1;
+}
+
+.form__popup-info::after,
+.wrong-password-info::after {
+	content: "";
+	position: absolute;
+	top: 35%;
+	left: -19px;
+	border-width: 10px;
+	rotate: 90deg;
+	border-style: solid;
+	border-color: var(--popup-color) transparent transparent transparent;
+}
+.form__popup-info i {
+	font-size: 1rem;
+	padding-right: 5px;
+	color: var(--error-color);
+}
+
+.form__popup-password,
+.form__popup-username {
+	bottom: -33px;
+	right: 50px;
+	font-size: 0.6rem;
+}
+.form__popup-password:after,
+.form__popup-username:after {
+	content: none;
+}
+
+.wrong-password-info {
+	position: absolute;
+	padding: 4px;
+	bottom: -50%;
+	left: -190px;
+	background-color: var(--white-color);
+	color: #000;
+	font-size: 0.8rem;
+	display: inline-block;
+	z-index: 100;
+}
+.wrong-password-info::after {
+	border-color: var(--white-color) transparent transparent transparent;
+	top: 30px;
+	rotate: -90deg;
+	left: 159px;
+}
+
+.form__input-show-password {
+	position: relative;
+	width: 100%;
+	margin-bottom: 20px;
+}
+.show-password {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 0;
+	top: -27px;
+	cursor: pointer;
+}
+.show-password-input {
+	margin-left: 5px;
+	height: 15px;
+	width: 15px;
+}
+.show {
+	visibility: visible;
+	animation: fadeIn 1s;
+}
+
+.form__help-items {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.form__help-checkbox-label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1em;
+	font-size: 0.8rem;
+	cursor: pointer;
+}
+
+.form__help-checkbox,
+.show-password-input {
+	background-color: trnasparent;
+	appearance: none;
+	border: 3px solid var(--second-color);
+	border-radius: 2px;
+}
+.form__help-checkbox {
+	margin-right: 6px;
+	height: 18px;
+	width: 18px;
+}
+.form__help-checkbox:checked,
+.show-password-input:checked {
+	appearance: checkbox;
+	accent-color: var(--white-color);
+	opacity: 0.7;
+}
+
+.form__button {
+	padding: 10px 28px;
+	border: 1px solid var(--white-color);
+	border-radius: 3px;
+	background-color: transparent;
+	color: inherit;
+	font-size: 1.05rem;
+	font-family: inherit;
+	text-transform: uppercase;
+	box-shadow: 0 0 5px var(--second-color) inset;
+	cursor: pointer;
+	transition: color 0.3s, background-color 0.3s;
+}
+.form__button:hover {
+	background-color: var(--white-color);
+	color: rgb(4, 42, 167);
+}
+
+.popup {
+	display: none;
+	justify-content: center;
+	position: absolute;
+	top: 20%;
+	left: 50;
+	transition: transformX(-50%);
+	height: 300px;
+	width: 70%;
+	border: 3px solid var(--white-color);
+	border-radius: 3px;
+	background-color: rgb(4, 42, 167);
+	animation: popup-move 0.2s ease-in-out;
+}
+.popup__icon {
+	position: relative;
+	padding-top: 50px;
+	font-size: 2rem;
+}
+.popup__icon::before {
+	position: absolute;
+	height: 2px;
+	width: 550%;
+	top: 110px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--second-color);
+	content: "";
+}
+.allow {
+	display: none;
+}
+.error {
+	color: var(--error-color);
+}
+.popup__info {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform: translateX(-50%);
+	font-size: 1.1rem;
+	text-align: center;
+	font-weight: 300;
+}
+.popup__info .congrats {
+	display: block;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.1rem;
+	margin-bottom: 0.5em;
+}
+.popup__close {
+	position: absolute;
+	right: 10px;
+	padding: 5px;
+	font-size: 3rem;
+	cursor: pointer;
+}
+@media (min-width: 360px) {
+	.form__help-items {
+		justify-content: space-between;
+		width: 100%;
+	}
+	.form__help-checkbox-label {
+		margin-bottom: 0em;
+	}
+	.form__help-checkbox-label,
+	a {
+		font-size: 0.7rem;
+	}
+	.form__popup-password,
+	.form__popup-username {
+		right: 100px;
+		font-size: 0.6rem;
+	}
+}
+@media (min-width: 567px) {
+	.form {
+		width: 400px;
+	}
+	.form__heading-title {
+		font-size: 2.2rem;
+	}
+	.form__input {
+		font-size: 1.2rem;
+	}
+
+	.form__help-checkbox-label,
+	a {
+		font-size: 0.95rem;
+	}
+	.form__button {
+		font-size: 1.2rem;
+	}
+	.popup__icon {
+		font-size: 3rem;
+	}
+	.popup__icon::before {
+		width: 800%;
+	}
+	.popup__info {
+		font-size: 1.3rem;
+	}
+	.popup__info .congrats {
+		font-size: 1.5rem;
+	}
+	.form__popup-password,
+	.form__popup-username {
+		right: 140px;
+		font-size: 0.6rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.form__popup-info {
+		font-size: 0.8rem;
+		padding: 5px;
+	}
+	.form__popup-info::after {
+		content: "";
+		position: absolute;
+		top: 30%;
+		left: -19px;
+		border-width: 10px;
+		rotate: 90deg;
+		border-style: solid;
+		border-color: var(--popup-color) transparent transparent transparent;
+	}
+	.form__popup-info i {
+		font-size: 1.5rem;
+		margin: 0 5px 0 5px;
+	}
+	
+	.form__popup-username {
+		bottom: -50%;
+		left: 0px;
+	}
+
+	.form__popup-password {
+		bottom: -50%;
+		left: 0px;
+	}
+	.wrong-password-info {
+		font-size: 1rem;
+		bottom: -50%;
+		left: 15px;
+	}
+	.wrong-password-info::after {
+		top: 67%;
+		left: -19px;
+		rotate: 90deg;
+	}
+}
+
+@media (min-width: 1200px) {
+	.popup {
+		width: 60%;
+	}
+	.popup__info {
+		font-size: 1.5rem;
+	}
+	.popup__info {
+		font-size: 1.5rem;
+	}
+	.popup__info .congrats {
+		font-size: 2rem;
+	}
+	.form__popup-info i {
+		margin: 0 5px 0 10px;
+	}
+}
+
+@keyframes popup-move {
+	0% {
+		transform: translateY(-400px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

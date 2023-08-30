@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolDevs Form</title>
+    <script src="https://kit.fontawesome.com/d2f9e8b96b.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <form class="form">
+        <div class="form__heading">
+
+            <div class="form__heading-icon spacer"><i class="fa-solid fa-user"></i></div>
+            <h2 class="form__heading-title spacer">Sing in</h2>
+        </div>
+
+        <div class="form__input-container spacer">
+            <i class="fa-solid fa-user form__input--icon"></i>
+            <input type="text" class="form__input username" placeholder="Username" onclick="hidePopupInfo(popupUsername)" >
+            <div class="form__popup" >
+                <span class="form__popup-info form__popup-username" id="popup__username"><i class="fa-solid fa-triangle-exclamation"></i><p class="wrong-username-info"></p></span>
+            </div>
+        </div>
+
+
+        <div class="form__input-container spacer">
+            <i class="fa-solid fa-lock form__input--icon"></i>
+            <input type="password" class="form__input password" placeholder="Password" onclick="hidePopupInfo(popupPassword)">
+            <div class="form__password-info"><i class="fa-solid fa-circle-info"></i>
+                <p class="wrong-password-info">
+                    The password must have a minimum of 10 characters and
+                    must contain a capital letter
+                </p>
+            </div>
+
+            <div class="form__popup">
+                <span class="form__popup-info form__popup-password" id="popup__password"><i class="fa-solid fa-triangle-exclamation"></i>
+                    <p class="password-info"></p>
+                </span>
+            </div>
+           
+        </div>
+         <div class="form__input-show-password ">
+            <label for="showPassword" class="show-password"><p class="show-password-info">Show password</p>
+                <input type="checkbox" id="showPassword" class="show-password-input" onchange="showHidePassword()"></label>
+            </div>
+
+        <div class="form__help-items spacer">
+            <div class="form__help-checkbox-container">
+
+                <label class="form__help-checkbox-label" for="checkbox">
+                    <input type="checkbox" id="checkbox" class="form__help-checkbox">Remeber me</label>
+            </div>
+            <a class="form__help-reminder" href="#">Forgot password?</a>
+        </div>
+        <button class="form__button spacer">Login</button>
+        <a href="#">Don't have an account? Register now</a>
+    </form>
+
+    <div class="popup">
+        <div class="popup__icon allow"><i class="fa-solid fa-door-open"></i></div>
+        <p class="popup__info"><span class="congrats">Congratulations!</span>You have been correctly logged in!</p>
+        <div class="popup__close">&times</div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
